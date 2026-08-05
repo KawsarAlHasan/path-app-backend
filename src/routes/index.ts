@@ -2,6 +2,7 @@ import express from "express";
 import { AdminRoutes } from "../app/modules/admin/admin.route";
 import { UserAuthRoutes } from "../app/modules/auth/user/userAuth.route";
 import { AdminAuthRoutes } from "../app/modules/auth/admin/adminAuth.route";
+import { UserRoutes } from "../app/modules/user/user.route";
 
 const router = express.Router();
 
@@ -17,6 +18,10 @@ const apiRoutes = [
   {
     path: "/auth/user",
     route: UserAuthRoutes,
+  },
+  {
+    path: "/user",
+    route: UserRoutes,
   },
 ];
 

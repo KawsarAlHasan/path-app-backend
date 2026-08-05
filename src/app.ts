@@ -3,9 +3,13 @@ import express, { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
 import bodyParser from "body-parser";
 import path from "path";
+
+import helmet from "helmet";
+import compression from "compression";
+
 import globalErrorHandler from "./app/middlewares/globalErrorHandler";
 import router from "./routes";
-import { dbClient } from "./lib/prisma";
+
 const app = express();
 
 // CORS configuration
@@ -17,6 +21,12 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+
+// Security middleware
+app.use(helmet());
+
+// Response compression
+app.use(compression());
 
 // Body parser for other routes (after webhook)
 app.use(bodyParser.json());
